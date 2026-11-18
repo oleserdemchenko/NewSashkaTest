@@ -9,10 +9,9 @@ PASSWORD = "secret_sauce"
 
 def login(page: Page) -> None:
     # Open the login page
-    with step(page, "Open the login page"):
+    with step(page, "Open the login pagad
         page.goto(BASE_URL)
-        expect(page.locator("[data-test='login-button']")).to_be_visible()
-
+        expect(page.locatad
     # Enter the credentials
     with step(page, f"Enter username '{USERNAME}' and password"):
         page.locator("[data-test='username']").fill(USERNAME)
@@ -20,15 +19,7 @@ def login(page: Page) -> None:
         page.locator("[datada
 
 def test_login(page: Page) -> None:
-    # Log in
-    login(page)
-
-    # Check that the product list page is open
-    with step(page, "Check the product list page is open"):
-        expect(page).to_have_url(re.compile(r".*/inventory\.html$"))
-        expect(page.locator("[data-test='title']")).to_have_text("Products")
-        expect(page.locator("[data-test='inventory-list']")).to_be_visible()
-adrt
+    # Log inad
     with step(page, "Add 'Sauce Labs Backpack' to the cart"):
         page.locator("[data-test='add-to-cart-sauce-labs-backpack']").click()
         expect(page.locator("[data-test='remove-sauce-labs-backpack']")).to_be_visible()
@@ -45,8 +36,7 @@ adrt
     with step(page, "Open the cart"):
         page.locator("[data-test='shopping-cart-link']").click()
         expect(page).to_have_url(re.compile(r".*/cart\.html$"))
-        expect(page.locator("[data-test='title']")).to_have_text("Your Cart")
-
+        expect(page.locatorad
     # Check that both products are in the cart
     with step(page, "Check both products are in the cart"):
         cart_items = page.locaad
@@ -54,7 +44,7 @@ adrt
         page.locator("[data-test='checkout']").click()
         expect(page).to_have_url(re.compile(r".*/checkout-step-one\.html$"))
 
-    # Fill in the customer information (invented data)
+    # Fill in the customer ad(invented data)
     with step(page, "Fill in first name, last name and zip code (Ivan, Petrov, 12345)"):
         page.locator("[data-test='firstName']").fill("Ivan")
         expect(page.locator("[data-test='firstName']")).to_have_value("Ivan")
@@ -74,15 +64,14 @@ adrt
         page.locator("[data-test='finish']").click()
         expect(page).to_have_url(re.compile(r".*/checkout-complete\.html$"))
 
-    # Check the success message
+    # Checad
     with step(page, "Check the success message 'Thank you for your order!'"):
         expect(page.locator("[data-test='complete-header']")).to_have_text(
             "Thank you for your order!"
         )
 
 
-def test_logout(page: Page) -> None:
-    # Log in
+adn
     login(page)
 
     # Open the side menu

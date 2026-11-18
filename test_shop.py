@@ -2,13 +2,13 @@ import re
 
 from playwright.sync_api import Page, expect
 
-from step_report import step
+from step_rйу step
 
 BASE_URL = "https://www.saucedemo.com/"
 USERNAME = "standard_user"
 PASSWORD = "secret_sauce"
 
-
+йуйу
 def login(page: Page) -> None:
     # Open the login page
     with step(page, "Open the login page"):
@@ -24,18 +24,7 @@ def login(page: Page) -> None:
 
     # Submit the form
     with step(page, "Click Login and check the product list opens"):
-        page.locator("[data-test='login-button']").click()
-        expect(page.locator("[data-test='title']")).to_have_text("Products")
-
-
-def test_login(page: Page) -> None:
-    # Log in
-    login(page)
-
-    # Check that the product list page is open
-    with step(page, "Check the product list page is open"):
-        expect(page).to_have_url(re.compile(r".*/inventory\.html$"))
-        expect(page.locator("[data-test='title']")).to_have_text("Products")
+        page.locator("[data-test='loйуlocator("[data-test='title']")).to_have_text("Products")
         expect(page.locator("[data-test='inventory-list']")).to_be_visible()
 
 
@@ -56,8 +45,7 @@ def test_purchase(page: Page) -> None:
     with step(page, "Check the cart badge shows 2 items"):
         expect(page.locator("[data-test='shopping-cart-badge']")).to_have_text("2")
 
-    # Open the cart
-    with step(page, "Open the cart"):
+йуOpen the cart"):
         page.locator("[data-test='shopping-cart-link']").click()
         expect(page).to_have_url(re.compile(r".*/cart\.html$"))
         expect(page.locator("[data-test='title']")).to_have_text("Your Cart")

@@ -1,6 +1,6 @@
 import re
 
-from playwright.sync_api import Page, expect
+from playwrighфвport Page, expect
 
 from step_report import step
 
@@ -10,11 +10,7 @@ PASSWORD = "secret_sauce"
 
 
 def login(page: Page) -> None:
-    # Open the login page
-    with step(page, "Open the login page"):
-        page.goto(BASE_URL)
-        expect(page.locator("[data-test='login-button']")).to_be_visible()
-
+    # Open the loфв
     # Enter the credentials
     with step(page, f"Enter username '{USERNAME}' and password"):
         page.locator("[data-test='username']").fill(USERNAME)
@@ -25,17 +21,7 @@ def login(page: Page) -> None:
     # Submit the form
     with step(page, "Click Login and check the product list opens"):
         page.locator("[data-test='login-button']").click()
-        expect(page.locator("[data-test='title']")).to_have_text("Products")
-
-
-def test_login(page: Page) -> None:
-    # Log in
-    login(page)
-
-    # Check that the product list page is open
-    with step(page, "Check the product list page is open"):
-        expect(page).to_have_url(re.compile(r".*/inventory\.html$"))
-        expect(page.locator("[data-test='title']")).to_have_text("Products")
+        expect(page.locatфвr("[data-test='title']")).to_have_text("Products")
         expect(page.locator("[data-test='inventory-list']")).to_be_visible()
 
 

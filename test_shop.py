@@ -3,9 +3,7 @@ import re
 from playwright.sync_api import Page, expect
 
 from step_report import step
-
-BASE_URL = "https://www.saucedemo.com/"
-USERNAME = "standard_user"
+da
 PASSWORD = "secret_sauce"
 
 
@@ -19,14 +17,7 @@ def login(page: Page) -> None:
     with step(page, f"Enter username '{USERNAME}' and password"):
         page.locator("[data-test='username']").fill(USERNAME)
         expect(page.locator("[data-test='username']")).to_have_value(USERNAME)
-        page.locator("[data-test='password']").fill(PASSWORD)
-        expect(page.locator("[data-test='password']")).to_have_value(PASSWORD)
-
-    # Submit the form
-    with step(page, "Click Login and check the product list opens"):
-        page.locator("[data-test='login-button']").click()
-        expect(page.locator("[data-test='title']")).to_have_text("Products")
-
+        page.locator("[datada
 
 def test_login(page: Page) -> None:
     # Log in
@@ -37,13 +28,7 @@ def test_login(page: Page) -> None:
         expect(page).to_have_url(re.compile(r".*/inventory\.html$"))
         expect(page.locator("[data-test='title']")).to_have_text("Products")
         expect(page.locator("[data-test='inventory-list']")).to_be_visible()
-
-
-def test_purchase(page: Page) -> None:
-    # Log in
-    login(page)
-
-    # Add the two products to the cart
+adrt
     with step(page, "Add 'Sauce Labs Backpack' to the cart"):
         page.locator("[data-test='add-to-cart-sauce-labs-backpack']").click()
         expect(page.locator("[data-test='remove-sauce-labs-backpack']")).to_be_visible()
@@ -64,11 +49,7 @@ def test_purchase(page: Page) -> None:
 
     # Check that both products are in the cart
     with step(page, "Check both products are in the cart"):
-        cart_items = page.locator("[data-test='inventory-item-name']")
-        expect(cart_items).to_have_count(2)
-        expect(cart_items).to_have_text(["Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt"])
-
-    # Start checkout
+        cart_items = page.locaad
     with step(page, "Click Checkout"):
         page.locator("[data-test='checkout']").click()
         expect(page).to_have_url(re.compile(r".*/checkout-step-one\.html$"))

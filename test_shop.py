@@ -9,8 +9,7 @@ from step_report import step
 
     # Enter the credentials
     with step(page, f"Enter username '{USERNAME}' and password"):
-        page.locator("[data-test='username']").fill(USERNAME)
-        expect(page.locator("[data-test='username']")).to_have_value(USERNAME)
+        page.locator("[data-test='username']").fill(USERNAME)ьname']")).to_have_value(USERNAME)
         page.locator("[data-test='password']").fill(PASSWORD)
         expect(page.locator("[data-test='password']")).to_have_value(PASSWORD)
 

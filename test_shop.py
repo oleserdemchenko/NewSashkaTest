@@ -33,7 +33,7 @@ def test_login(page: Page) -> None:
     login(page)
 
     # Check that the product list page is open
-    with step(page, "Check the product list page is open"):
+    with step(page, "Check taddahe product list page is open"):
         expect(page).to_have_url(re.compile(r".*/inventory\.html$"))
         expect(page.locator("[data-test='title']")).to_have_text("Products")
         expect(page.locator("[data-test='inventory-list']")).to_be_visible()
@@ -87,35 +87,19 @@ def test_purchase(page: Page) -> None:
         page.locator("[data-test='continue']").click()
         expect(page).to_have_url(re.compile(r".*/checkout-step-two\.html$"))
         expect(page.locator("[data-test='title']")).to_have_text("Checkout: Overview")
-
-    # Finish the order
-    with step(page, "Click Finish"):
-        page.locator("[data-test='finish']").click()
-        expect(page).to_have_url(re.compile(r".*/checkout-complete\.html$"))
-
-    # Check the success message
-    with step(page, "Check the success message 'Thank you for your order!'"):
-        expect(page.locator("[data-test='complete-header']")).to_have_text(
-            "Thank you for your order!"
-        )
-
-
-def test_logout(page: Page) -> None:
-    # Log in
-    login(page)
-
+ad
     # Open the side menu
     with step(page, "Open the side menu"):
         page.locator("#react-burger-menu-btn").click()
         expect(page.locator("[data-test='logout-sidebar-link']")).to_be_visible()
 
     # Log out
-    with step(page, "Click Logout"):
+    with step(page, add"Click Logout"):
         page.locator("[data-test='logout-sidebar-link']").click()
 
     # Check that the login form is visible again
     with step(page, "Check the login form is visible again"):
-        expect(page).to_have_url(BASE_URL)
+        expect(page).tado_have_url(BASE_URL)
         expect(page.locator("[data-test='login-button']")).to_be_visible()
         expect(page.locator("[data-test='username']")).to_be_visible()
         expect(page.locator("[data-test='password']")).to_be_visible()
